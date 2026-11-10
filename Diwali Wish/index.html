@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✨ Shubh Deepavali | Festival of Lights Celebration ✨</title>
+  <meta name="description" content="Experience the divine celebration of Diwali with interactive diyas, fireworks, procedural sitar ambient music, personalized greeting card studio, and festive blessings.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
+  
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="stylesheet" href="./static/css/style.css">
+</head>
+<body>
+
+  <!-- Fullscreen Particle & Fireworks Canvas -->
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- Auspicious Festive Garland (Toran) along the top -->
+  <div class="festive-garland-top">
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+    <div class="hanging-leaf"></div>
+  </div>
+
+  <!-- Top Floating Controls (Sound & Interactive Tools) -->
+  <div class="top-controls">
+    <button class="control-btn" id="btn-sound-toggle" title="Toggle Sound Effects">🔊 Sound: On</button>
+    <button class="control-btn" id="btn-music-toggle" title="Play Traditional Festive Ambient Music">🎶 Ambient Music</button>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="container">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="mandala-bg"></div>
+      
+      <div class="sub-greeting">May Your Life Be Filled With Divine Light</div>
+      <h1 class="main-title">SHUBH DEEPAVALI</h1>
+      
+      <p class="sanskrit-verse">शुभं करोति कल्याणम् आरोग्यम् धनसंपदा । शत्रुबुद्धि विनाशाय दीपज्योति नमोऽस्तुते ॥</p>
+      <p class="sanskrit-translation">
+        “Salutations to the supreme light of the Diya, which brings auspiciousness, prosperity, health, and banishes the shadows of ignorance.”
+      </p>
+
+      <!-- Quick Fireworks Action Toolbar -->
+      <div class="fireworks-toolbar">
+        <button class="action-btn" id="btn-auto-fire">🎆 Auto Fireworks: ON</button>
+        <button class="action-btn secondary" id="btn-sparkler-mode">✨ Sparkler Wand: OFF</button>
+        <button class="action-btn secondary" id="btn-light-all">🪔 Light All Diyas</button>
+      </div>
+    </section>
+
+    <!-- 1. Interactive Diya Lighting Ceremony (Deepotsav) -->
+    <section class="diya-ceremony-card">
+      <h2 class="ceremony-heading">🪔 Sacred Deepotsav Ritual</h2>
+      <p class="ceremony-desc">
+        Click on each sacred earthen Diya below to light its eternal flame and invoke divine blessings for your family!
+      </p>
+
+      <div class="diya-altar">
+        <!-- Diya 1 -->
+        <div class="diya-item" id="diya-1" title="Click to light the Diya of Wisdom">
+          <div class="diya-flame-wrapper">
+            <div class="flame"><div class="flame-inner"></div></div>
+          </div>
+          <div class="diya-bowl"></div>
+          <div class="diya-label">ज्ञान (Wisdom)</div>
+        </div>
+
+        <!-- Diya 2 -->
+        <div class="diya-item" id="diya-2" title="Click to light the Diya of Prosperity">
+          <div class="diya-flame-wrapper">
+            <div class="flame"><div class="flame-inner"></div></div>
+          </div>
+          <div class="diya-bowl"></div>
+          <div class="diya-label">समृद्धि (Prosperity)</div>
+        </div>
+
+        <!-- Diya 3 -->
+        <div class="diya-item" id="diya-3" title="Click to light the Diya of Health">
+          <div class="diya-flame-wrapper">
+            <div class="flame"><div class="flame-inner"></div></div>
+          </div>
+          <div class="diya-bowl"></div>
+          <div class="diya-label">आरोग्य (Health)</div>
+        </div>
+
+        <!-- Diya 4 -->
+        <div class="diya-item" id="diya-4" title="Click to light the Diya of Peace">
+          <div class="diya-flame-wrapper">
+            <div class="flame"><div class="flame-inner"></div></div>
+          </div>
+          <div class="diya-bowl"></div>
+          <div class="diya-label">शांति (Peace)</div>
+        </div>
+
+        <!-- Diya 5 -->
+        <div class="diya-item" id="diya-5" title="Click to light the Diya of Joy">
+          <div class="diya-flame-wrapper">
+            <div class="flame"><div class="flame-inner"></div></div>
+          </div>
+          <div class="diya-bowl"></div>
+          <div class="diya-label">आनंद (Bliss)</div>
+        </div>
+      </div>
+
+      <div class="diya-status-badge" id="diya-count-badge">0 of 5 Diyas Awakened ✨</div>
+
+      <!-- Maha Blessing Reveal (Triggered when 5/5 diyas are lit) -->
+      <div class="maha-blessing-banner" id="maha-blessing-banner">
+        <h3>🌟 MAHA DEEPOTSAV BLESSING 🌟</h3>
+        <p>
+          ॐ श्रीं ह्रीं क्लीं त्रिभुवन महालक्ष्म्यै अस्मांक दारिद्र्य नाशय प्रचुर धन देहि देहि क्लीं ह्रीं श्रीं ॐ ।<br>
+          <strong>All lamps shine bright!</strong> May the supreme grace of Goddess Mahalakshmi and Lord Ganesha shower your household with limitless wealth, vibrant health, and perpetual bliss!
+        </p>
+      </div>
+    </section>
+
+    <!-- Decorative Section Divider -->
+    <div class="festive-divider">
+      <div class="line"></div>
+      <div class="center-icon">🪔 ॐ 🪔</div>
+      <div class="line"></div>
+    </div>
+
+    <!-- 2. Personalized Greeting Card Studio -->
+    <div class="section-header">
+      <h2>✨ Personalized Diwali Wish Studio ✨</h2>
+      <p>Craft an exquisite customized greeting card for your friends, family, and colleagues</p>
+    </div>
+
+    <div class="main-grid">
+      <!-- Input Controls -->
+      <div class="studio-card">
+        <h3 style="color: var(--gold-primary); margin-bottom: 20px; font-family: var(--font-serif);">
+          🎨 Customize Your Greeting
+        </h3>
+
+        <div class="form-group">
+          <label for="input-recipient">Who is this wish for? (Recipient Name)</label>
+          <input type="text" id="input-recipient" class="form-control" placeholder="e.g., Dear Sharma Family / Priya / Rohit" value="Dear Loved Ones">
+        </div>
+
+        <div class="form-group">
+          <label for="input-sender">From? (Your Name / Signature)</label>
+          <input type="text" id="input-sender" class="form-control" placeholder="e.g., Raj & Family" value="Raj">
+        </div>
+
+        <div class="form-group">
+          <label for="input-message">Personalized Diwali Blessing / Message</label>
+          <textarea id="input-message" class="form-control" placeholder="Type your heartfelt blessings here...">May the supreme divine light of Diwali illuminate your life with boundless peace, health, immense prosperity, and endless happiness!</textarea>
+          
+          <!-- Preset Quote Pills -->
+          <div class="preset-wishes-selector">
+            <button type="button" class="preset-pill" data-quote="May the divine light of Diwali shine with peace, prosperity, happiness, and good health in your life. Shubh Deepavali!">🌿 Health & Joy</button>
+            <button type="button" class="preset-pill" data-quote="तमसो मा ज्योतिर्गमय — May this holy festival of lights guide you from darkness into eternal light and wisdom.">🕉️ Sacred Shloka</button>
+            <button type="button" class="preset-pill" data-quote="Wishing you a sparkling Diwali filled with sweet moments, fireworks of success, and the bountiful blessings of Goddess Lakshmi!">💰 Wealth & Fortune</button>
+            <button type="button" class="preset-pill" data-quote="May every Diya you light today bring an ocean of smiles, harmony, and grand celebrations to your sweet home!">✨ Love & Harmony</button>
+          </div>
+        </div>
+
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 15px;">
+          💡 <em>Tip: The live preview on the right updates instantly as you type!</em>
+        </p>
+      </div>
+
+      <!-- Live 3D Greeting Card Preview -->
+      <div class="card-preview-wrapper">
+        <div class="greeting-card-preview" id="greeting-card-element">
+          <!-- Ornate Gold Filigree Corners -->
+          <div class="card-corner corner-tl"></div>
+          <div class="card-corner corner-tr"></div>
+          <div class="card-corner corner-bl"></div>
+          <div class="card-corner corner-br"></div>
+
+          <div class="preview-badge">✨ Shubh Deepavali Greetings ✨</div>
+          <h3 class="preview-recipient" id="preview-recipient">Dear Loved Ones</h3>
+
+          <div class="preview-center-icon">🪔</div>
+
+          <p class="preview-message" id="preview-message">
+            “May the supreme divine light of Diwali illuminate your life with boundless peace, health, immense prosperity, and endless happiness!”
+          </p>
+
+          <div class="preview-sender" id="preview-sender">~ Raj</div>
+        </div>
+
+        <!-- Sharing & Export Buttons -->
+        <div class="card-actions-grid">
+          <button class="share-btn btn-copy" id="btn-copy-link">
+            📋 Copy Custom Link
+          </button>
+          <button class="share-btn btn-whatsapp" id="btn-share-whatsapp">
+            💬 Share on WhatsApp
+          </button>
+          <button class="share-btn btn-download" id="btn-download-card">
+            🖼️ Download as Card (High-Res Image)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Decorative Section Divider -->
+    <div class="festive-divider">
+      <div class="line"></div>
+      <div class="center-icon">🌸 ॐ 🌸</div>
+      <div class="line"></div>
+    </div>
+
+    <!-- 3. Community Diwali Wish Wall -->
+    <section class="wish-wall-card">
+      <div class="section-header" style="margin-bottom: 25px;">
+        <h2>🪔 Community Diwali Wish Wall</h2>
+        <p>Leave your auspicious prayers and warm festive greetings on our digital Deepstambh</p>
+      </div>
+
+      <div class="wish-submit-box">
+        <input type="text" id="input-wall-name" class="form-control" placeholder="Your Name (e.g., Ananya)">
+        <input type="text" id="input-wall-text" class="form-control" style="flex: 2;" placeholder="Write your warm Diwali wish for everyone...">
+        <button class="action-btn" id="btn-post-wish" style="padding: 12px 28px;">
+          ✨ Post Wish
+        </button>
+      </div>
+
+      <div class="wishes-grid" id="wishes-wall-container">
+        <!-- Dynamically populated by JS / Flask backend -->
+      </div>
+    </section>
+
+    <!-- 4. Auspicious Significance & Traditions -->
+    <section>
+      <div class="section-header">
+        <h2>✨ Sacred Traditions of Diwali ✨</h2>
+        <p>The timeless spiritual heritage celebrating the victory of light over darkness</p>
+      </div>
+
+      <div class="traditions-grid">
+        <div class="tradition-box">
+          <div class="tradition-icon">🪔</div>
+          <h4>Deep Daan</h4>
+          <p>Lighting earthen lamps symbolizes awakening the inner soul, banishing ignorance, and welcoming spiritual illumination.</p>
+        </div>
+
+        <div class="tradition-box">
+          <div class="tradition-icon">🌺</div>
+          <h4>Rangoli & Toran</h4>
+          <p>Vibrant geometric patterns and marigold garlands grace doorsteps to welcome Goddess Lakshmi and positive cosmic energies.</p>
+        </div>
+
+        <div class="tradition-box">
+          <div class="tradition-icon">🪙</div>
+          <h4>Dhanteras & Lakshmi Puja</h4>
+          <p>Invoking the blessings of Lord Dhanvantari, Lord Kubera, and Goddess Lakshmi for everlasting well-being and prosperity.</p>
+        </div>
+
+        <div class="tradition-box">
+          <div class="tradition-icon">🍬</div>
+          <h4>Mithai & Harmony</h4>
+          <p>Sharing delectable sweets and festive dry fruits among neighbours and family, strengthening the sacred bonds of love.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Festive Footer -->
+  <footer>
+    <div class="footer-shloka">ॐ सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः । सर्वे भद्राणि पश्यन्तु मा कश्चिद्दुःखभाग्भवेत् ॥</div>
+    <p>May all beings everywhere be happy, free from illness, witness auspiciousness, and be liberated from sorrow.</p>
+    <p style="margin-top: 10px; color: var(--gold-light);">
+      ✨ Designed with Love & Devotion for Diwali ✨
+    </p>
+  </footer>
+
+  <!-- Toast Notification element -->
+  <div class="toast-notice" id="toast-notification">✨ Shubh Deepavali!</div>
+
+  <!-- Scripts -->
+  <script src="./static/js/sound.js"></script>
+  <script src="./static/js/fireworks.js"></script>
+  <script src="./static/js/app.js"></script>
+</body>
+</html>
